@@ -73,17 +73,6 @@ experience in your app.
 ### Auto sign-in
 
 If you would like your users to be able to launch your app directly into a signed in state after an
-initial authentication, you can enable that via a flag on the `Auth0Provider` constructor.
-
-```swift
-let auth0 = Auth0Provider(enableCachedLogins: true)
-```
-
-This uses Auth0's
-[`CredentialsManager`](https://auth0.github.io/Auth0.swift/documentation/auth0/credentialsmanager/)
-behind the scenes to store tokens in the Keychain after successful authentication and to retrieve
-previously stored tokens.
-
-With `enableCachedLogins` you can call the `ConvexClientWithAuth.loginFromCache` method and it will
-automatically sign the user back in if prior valid credentials are available. It will update the
+initial authentication, you can call the `ConvexClientWithAuth.loginFromCache` method and it will
+automatically sign the user back in, refreshing credentials if needed. It will update the
 `authState` flow just like calls to `login` and `logout` do for interactive operations.
